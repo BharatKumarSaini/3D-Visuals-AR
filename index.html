@@ -1,11 +1,11 @@
 
 <html>
-  <script src="vendor/aframe/build/aframe.min.js"></script>
-  <!-- include ar.js -->
-  <script src="vendor/arjs/build/aframe-ar.js"></script>
+  <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/dev/aframe/build/aframe-ar.js"></script>
+  
   <body style="margin : 0px; overflow: hidden;">
-    <a-scene embedded arjs>
-      <a-marker  type="pattern" preset="custom" url="assets/marker.patt">
+    <a-scene embedded arjs='sourceType: webcam;'>
+      <a-marker id='1'type="pattern" preset="custom" url="assets/marker.patt">
         <!-- we use cors proxy to avoid cross-origin problems -->
         <!--
           ⚠️⚠️⚠️
@@ -20,8 +20,18 @@
         >
      </a-entity>
       </a-marker>
-      <a-entity camera></a-entity>
+      <a-camera-static/>
     </a-scene>
   </body>
+  <script>
+    var m = document.getElementById("1")
+   m.addEventListener("markerFound", (e)=>{
+      console.log("found")
+   })
+   
+   m.addEventListener("markerLost", (e)=>{
+      console.log("lost")
+   })
+     </script>
 </html>
 
