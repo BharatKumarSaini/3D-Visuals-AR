@@ -5,7 +5,7 @@
   
   <body style="margin : 0px; overflow: hidden;">
     <a-scene embedded arjs='sourceType: webcam;'>
-      <a-marker id='1'type="pattern" preset="custom" url="assets/marker.patt">
+      <a-marker id='marker'type="pattern" preset="custom" url="assets/marker.patt">
         <!-- we use cors proxy to avoid cross-origin problems -->
         <!--
           ⚠️⚠️⚠️
@@ -21,16 +21,19 @@
      </a-entity>
       </a-marker>
       <a-camera-static/>
+    
     </a-scene>
   </body>
   <script>
-    var m = document.getElementById("1")
+    var m = document.getElementById("marker")
+    var audio = new Audio('assets/sound.wav');
    m.addEventListener("markerFound", (e)=>{
-      console.log("found")
+audio.play();
    })
    
    m.addEventListener("markerLost", (e)=>{
       console.log("lost")
+      audio.pause()
    })
      </script>
 </html>
