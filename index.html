@@ -6,34 +6,48 @@
   <body style="margin : 0px; overflow: hidden;">
     <a-scene embedded arjs='sourceType: webcam;'>
       <a-marker id='marker'type="pattern" preset="custom" url="assets/marker.patt">
-        <!-- we use cors proxy to avoid cross-origin problems -->
-        <!--
-          ⚠️⚠️⚠️
-          https://arjs-cors-proxy.herokuapp.com/ is now offline, Heroku has dismissed all his free plans from November 2022.
-          You need to host your own proxy and use it instead. The proxy is based on CORS Anywhere (see https://github.com/Rob--W/cors-anywhere).
-          ⚠️⚠️⚠️
-        -->
+
         <a-entity
-          position="0 0 0"
-          scale="0.05 0.05 0.05"
-          obj-model="obj: url(models/smile.obj);"
+        id="check"
+        position="0 0 0.45"
+        rotation="-100 0 0" animation="property: rotation; to: 360 360 0; loop: true; dur: 100"
+          scale="0.045 0.045 0.045"
+          obj-model="obj: url(models/emoji_064.obj);"
+          material="color: yellow"
+          visible="true"
         >
      </a-entity>
+     <a-entity
+     id="check2"
+     position="0 0 0.5"
+     rotation="-100 0 0" animation="property: rotation; to: 360 360 0; loop: true; dur: 100"
+       scale="0.25 0.25 0.25"
+       obj-model="obj: url(models/emoji_face.obj);"
+       material="color: yellow"
+       visible="false"
+     >
+  </a-entity>
       </a-marker>
       <a-camera-static/>
-    
     </a-scene>
   </body>
   <script>
     var m = document.getElementById("marker")
-    var audio = new Audio('assets/sound.wav');
+    var audio1=new Audio("assets/connect.mp3")
+    var audio2=new Audio("assets/model2.mp3")
    m.addEventListener("markerFound", (e)=>{
-audio.play();
+  audio1.play()
+  setTimeout(()=>{
+    document.getElementById("check").setAttribute('visible', false);
+    document.getElementById("check2").setAttribute('visible', true);
+    audio1.pause()
+    audio2.play()
+}, 5000);
    })
    
    m.addEventListener("markerLost", (e)=>{
-      console.log("lost")
-      audio.pause()
+     audio1.pause()
+     audio2.pause()
    })
      </script>
 </html>
