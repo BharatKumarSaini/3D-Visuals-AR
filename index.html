@@ -12,12 +12,12 @@
         position="0 0 0.45"
         rotation="-100 0 0" animation="property: rotation; to: 360 360 0; loop: true; dur: 100"
           scale="0.045 0.045 0.045"
-          obj-model="obj: url(models/emoji_064.obj);"
+          obj-model="obj: url(models/emo.obj);"
           material="color: yellow"
           visible="true"
         >
      </a-entity>
-     <a-entity
+     <!-- <a-entity
      id="check2"
      position="0 0 0.5"
      rotation="-100 0 0" animation="property: rotation; to: 360 360 0; loop: true; dur: 100"
@@ -26,7 +26,7 @@
        material="color: yellow"
        visible="false"
      >
-  </a-entity>
+  </a-entity> -->
       </a-marker>
       <a-camera-static/>
     </a-scene>
@@ -34,20 +34,20 @@
   <script>
     var m = document.getElementById("marker")
     var audio1=new Audio("assets/connect.mp3")
-    var audio2=new Audio("assets/model2.mp3")
+    // var audio2=new Audio("assets/model2.mp3")
    m.addEventListener("markerFound", (e)=>{
   audio1.play()
-  setTimeout(()=>{
-    document.getElementById("check").setAttribute('visible', false);
-    document.getElementById("check2").setAttribute('visible', true);
-    audio1.pause()
-    audio2.play()
-}, 5000);
+//   setTimeout(()=>{
+//     document.getElementById("check").setAttribute('visible', false);
+//     document.getElementById("check2").setAttribute('visible', true);
+//     audio1.pause()
+//     audio2.play()
+// }, 5000);
    })
    
    m.addEventListener("markerLost", (e)=>{
      audio1.pause()
-     audio2.pause()
+    //  audio2.pause()
    })
      </script>
 </html>
