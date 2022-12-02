@@ -16,13 +16,16 @@
     <a-scene embedded arjs='sourceType: webcam;'>
       <a-marker id='marker'type="pattern" preset="custom" url="assets/marker.patt">
 
+
+
+        <!-- model -->
         <a-entity
         id="check"
-        position="0 0 1"
+        position="0 0 0.5"
         rotation="-45 70 -60"
-          scale="0.025 0.025 0.025"
-          obj-model="obj: url(models/emo.obj);"
-          visible="true"
+        scale="0.010 0.010 0.010"
+        obj-model="obj: url(models/emo.obj);"
+        visible="true"
         >
      </a-entity>
       </a-marker>
